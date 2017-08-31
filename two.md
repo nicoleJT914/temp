@@ -6,7 +6,7 @@ public class test2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int count = Integer.valueOf(scanner.nextLine());
-        Set<String> set = new HashSet<>(count);
+        TreeSet<String> set = new TreeSet<>();
         for(int i =0;i<count;i++){
             set.add(scanner.nextLine());
         }
