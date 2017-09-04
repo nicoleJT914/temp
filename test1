@@ -1,0 +1,53 @@
+import java.util.*;
+
+public class test2 {
+
+    static class stu implements Comparable {
+        String name;        //学生姓名
+        List<Integer> course = new ArrayList<>(); //课程
+
+        @Override
+        public int compareTo(Object o) {
+            return this.name.compareTo(((stu) o).name);
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        List<stu> data = new ArrayList<>();
+
+        while (n-- > 0) {
+            stu tmp = new stu();
+            String name = scanner.next();
+            tmp.name = name;
+            int c = scanner.nextInt();
+            while (c-- > 0) {
+                Integer x = scanner.nextInt();
+                tmp.course.add(x);
+            }
+            data.add(tmp);
+        }
+        Collections.sort(data);
+        Map<Integer,List<String>> map = new HashMap<>();
+        for (stu it : data) {
+            for (Integer ik : it.course) {
+                if(map.get(ik)==null)
+                    map.put(ik,new ArrayList<>());
+                map.get(ik).add(it.name);
+            }
+        }
+        for (int i = 1; i <= k; i++) {
+            if (map.get(i)!=null) {
+                System.out.println(i + " " + map.get(i).size());
+                for (String s : map.get(i)) {
+                    System.out.println(s);
+                }
+            } else {
+                System.out.println(i + " 0");
+            }
+        }
+    }
+}
