@@ -1,0 +1,39 @@
+mport java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner in=new Scanner(System.in);
+        int N=in.nextInt();
+        int K=in.nextInt();
+        HashMap<String,ArrayList<Integer>> map=new HashMap<String,ArrayList<Integer>>(); 
+        for(int i=0;i<K;i++){
+            int c=in.nextInt();
+            int num=in.nextInt();
+            for(int j=0;j<num;j++){
+                String name=in.next();
+                if(map.get(name)==null){
+                    map.put(name,new ArrayList<Integer>());
+                }
+                map.get(name).add(c);
+            }
+        }
+        for(int i=0;i<N;i++){
+           String temp=in.next();
+            System.out.print(temp+" ");
+            ArrayList<Integer> list=map.get(temp);
+            if(list==null)
+            {
+                System.out.println(0);
+                continue;
+            }
+            System.out.print(list.size());
+            Collections.sort(list);
+            for(int j=0;j<list.size();j++){
+              System.out.print(" "+list.get(j));
+            }
+                 
+            System.out.println();
+        }
+        in.close();
+        }
+         
+    }
