@@ -31,7 +31,7 @@ public class test2 {
             data.add(tmp);
         }
         Collections.sort(data);
-        Map<Integer,List<String>> map = new HashMap<>();
+        Map<Integer,ArrayList<String>> map = new HashMap<Integer,ArrayList<String>>();
         for (stu it : data) {
             for (Integer ik : it.course) {
                 if(map.get(ik)==null)
