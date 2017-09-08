@@ -21,7 +21,12 @@ public class test4 {
                 temp++;
                 flag = true;
             } else if (flag) {
-                result += jiecheng(temp);
+                int tempResult = jiecheng(temp);
+                if(result==0){
+                    result = tempResult;
+                }else{
+                    result *=tempResult;
+                }
                 temp = 0;
                 flag = false;
             }
