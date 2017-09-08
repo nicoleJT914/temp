@@ -1,6 +1,10 @@
 import java.util.Scanner;
+import java.util.Stack;
 
 public class test4 {
+
+    private static Stack<Integer> stack = new Stack<>();
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.nextLine();
@@ -13,24 +17,28 @@ public class test4 {
     }
 
     private static void count(char[] inputChar) {
-        int result = 0;
-        int temp = 0;
-        boolean flag = true;
+        int result = 1;
+        int left = 0;
+        int right = 0;
         for (char c : inputChar) {
             if (c == '(') {
-                temp++;
-                flag = true;
-            } else if (flag) {
-                int tempResult = jiecheng(temp);
-                if(result==0){
-                    result = tempResult;
-                }else{
-                    result *=tempResult;
+                if (right != 0) {
+                    Integer leftStack = stack.pop();
+                    if (right < left)
+                        stack.push(leftStack - right);
+                    result *= jiecheng(right);
+                    right = 0;
                 }
-                temp = 0;
-                flag = false;
+                left++;
+            } else {
+                if (left != 0) {
+                    stack.push(left);
+                    left = 0;
+                }
+                right++;
             }
         }
+        result *= jiecheng(right);
         System.out.println(result);
     }
 
