@@ -1,0 +1,29 @@
+import java.math.BigDecimal;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class test4 {
+
+    private static Stack<Integer> stack = new Stack<>();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        char[] inputChar = input.toCharArray();
+        char pre = '0';
+        BigDecimal count=BigDecimal.ONE;
+        for (char c : inputChar) {
+            if(pre=='0'){
+                pre=c;
+                continue;
+            }
+            if(c!=pre){
+                pre =c;
+                count = count.add(BigDecimal.ONE);
+            }
+        }
+        BigDecimal result = new BigDecimal(inputChar.length);
+        result = result.divide(count,2,BigDecimal.ROUND_HALF_UP);
+        System.out.println(result);
+    }
+}
