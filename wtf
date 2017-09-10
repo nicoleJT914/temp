@@ -2,18 +2,18 @@ import java.util.*;
 
 public class Second {
     public static void main(String args[]) {
-        Set<Integer> set = new HashSet<>();
-        Set<Integer> result = new HashSet<>();
         Scanner scanner = new Scanner(System.in);
         Integer count = scanner.nextInt();
-        List<Integer> a  = new ArrayList<>(count);
+        int result = 0;
+        int temp =0;
         for(int i=0;i<count;i++){
-            Integer temp = scanner.nextInt();
-            if(temp.equals(0))
-                result.add(temp);
-            else if(!set.add(temp))
-                result.add(temp);
+            Integer input = scanner.nextInt();
+            temp = temp^input;
+            if(input==0||temp==0){
+                result++;
+                temp = 0;
+            }
         }
-        System.out.println(result.size());
+        System.out.println(result);
     }
 }
