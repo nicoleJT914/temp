@@ -1,0 +1,47 @@
+
+import java.util.Scanner;
+
+public class avc {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int x1 = scanner.nextInt();
+        int k1 = scanner.nextInt();
+        int x2 = scanner.nextInt();
+        int k2 = scanner.nextInt();
+        String x1String = String.valueOf(x1);
+        String x2String = String.valueOf(x2);
+        if (x1String.length() * k1 < x2String.length() * k2) {
+            System.out.println("Less");
+            return;
+        }
+        if (x1String.length() * k1 > x2String.length() * k2) {
+            System.out.println("Greater");
+            return;
+        }
+        int maxMult = getMaxMult(x1String.length(), x2String.length());
+        for (int i = 0; i < maxMult; i++) {
+            if (x1String.charAt(i % x1String.length()) < x2String.charAt(i % x2String.length())) {
+                System.out.println("Less");
+                return;
+            }
+            if (x1String.charAt(i % x1String.length()) < x2String.charAt(i % x2String.length())) {
+                System.out.println("Greater");
+                return;
+            }
+        }
+        System.out.println("Equal");
+
+    }
+
+    private static int getMaxMult(int a, int b) {
+        int m = a % b;
+        while (m != 0) {
+            a = b;
+            b = m;
+            m = a % b;
+        }
+        return b;
+    }
+
+
+}
