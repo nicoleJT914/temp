@@ -4,10 +4,8 @@ public class Second {
     public static void main(String args[]) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
-        char[] chars =input.toCharArray();
         int rCount =0;
         int gCount = 0;
-        int result = 0;
         int rTemp=0;
         int gTemp=0;
         for(int i=0;i<input.length();i++){
@@ -23,6 +21,10 @@ public class Second {
             }else{
                 rTemp++;
             }
+        }
+        if(gTemp==input.length()){
+            rCount=gTemp;
+            gCount=gTemp;
         }
         System.out.println(rCount>gCount?gCount:rCount);
     }
