@@ -1,0 +1,24 @@
+import java.util.Scanner;
+
+public class testtest {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int count = scanner.nextInt();
+        int[] list = new int[count];
+        for (int i = 0; i < count; i++) {
+            list[i] = scanner.nextInt();
+        }
+        int sum = 0;
+        int a = 0;
+        for (int i = 0; i < list.length; i++) {
+            sum++;
+            if(i%4<2)
+                a++;
+        }
+        if(a>sum-a)
+            System.out.println("true");
+        else
+            System.out.println("false");
+    }
+}
