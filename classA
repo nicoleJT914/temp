@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class ClassA {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Integer k = scanner.nextInt();
+        Integer n = scanner.nextInt();
+        Integer min = null;
+        Integer max = null;
+        for (Integer i = 0; i < k; i++) {
+            boolean flag = true;
+            for (Integer integer = 0; integer < n; integer++) {
+                Integer temp = scanner.nextInt();
+                if (min == null) {
+                    min = temp;
+                    max = temp;
+                    flag = false;
+                }
+                if (flag) {
+                    if (temp < min)
+                        min = temp;
+                    if (temp > max)
+                        max = temp;
+                    flag = false;
+                }
+            }
+        }
+        System.out.println(min + " " + max);
+    }
+}
